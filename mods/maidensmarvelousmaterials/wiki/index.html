@@ -47,7 +47,7 @@
 					document.querySelector('.wiki-content').innerHTML = result.toHTML();
 					let title = (result.getProperty('title') ?? usp.get('entry') ?? 'Unknown Page').trim();
 					let header = document.querySelector('.wiki-header');
-					header += '<p>in: ' + category + '</p>'
+					header.innerHTML += '<p>in: ' + category + '</p>'
 					header.innerHTML += '<h1>' + SHML.parseInlineMarkup(title).toHTML() + '</h1>';
 					let revisedOn = result.getProperty('revised')
 					if(revisedOn !== undefined) header += '<p>Last Revised On: ' + revisedOn.trim(); + '</p>';
