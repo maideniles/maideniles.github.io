@@ -28,7 +28,7 @@
 		<article class="wiki-content">
 		
 		</article>
-		<script>
+		<script> 
 			let usp = new URLSearchParams(window.location.search);
 			fetch('pages/' + (usp.get('category') ?? 'main') + '/' + (usp.get('entry') ?? 'index') + '.txt')
 			.then(
