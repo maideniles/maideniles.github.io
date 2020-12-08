@@ -1,5 +1,5 @@
 !title: Trees (*Demo Page*)
-!picture: treess.png
+!picture: trees.png
 !revised: 12/8/2020
 + Trees are cool
 + I like trees
