@@ -25,12 +25,20 @@
 		</style>
 	</head>
 	<body>
-		<article class="wiki-content">
-		
+		<article>
+			<header class="wiki-header">
+			
+			</header>
+			<hr>
+			<img class="wiki-image">
+			<section class="wiki-content">
+			
+			</section>
 		</article>
-		<script> 
+		<script>
+			let category = (usp.get('category') ?? 'main');
 			let usp = new URLSearchParams(window.location.search);
-			fetch('pages/' + (usp.get('category') ?? 'main') + '/' + (usp.get('entry') ?? 'index') + '.txt')
+			fetch('pages/' + category + '/' + (usp.get('entry') ?? 'index') + '.txt')
 			.then(
 				response => response.text()
 			)
@@ -38,11 +46,16 @@
 				(text) => {
 					let result = SHML.parseMarkup(text);
 					document.querySelector('.wiki-content').innerHTML = result.toHTML();
-					document.title += ' (' + (result.getProperty('title') ?? 'Unknown Page') + ')';
+					let title = (result.getProperty('title').trim() ?? usp.get('entry') ?? 'Unknown Page')
+					let header = document.querySelector('.wiki-header');
+					header += '<p>in: ' + category + '</p>'
+					header.innerHTML += '<h1>' + SHML.parseInlineMarkup(title).toHTML() + '</h1>';
+					let revisedOn = result.getProperty('revised').trim();
+					if(revised !== undefined) header += '<p>Last Revised On: ' + revisedOn + '</p>';
+					document.title += ' (' + title + ')';
+					document.querySelector('.wiki-image').src = 'images/' + result.getProperty('picture').trim();
 				}
 			);
-			//let result = 
-			//write(result.toHTML())
 		</script>
 	</body>
 </html>
