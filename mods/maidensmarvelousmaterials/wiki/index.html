@@ -37,7 +37,7 @@
 			.then(
 				(text) => {
 					let result = SHML.parseMarkup(text);
-					document.quertySelector('article .wiki-content').innerHTML = result.toHTML();
+					document.querySelector('article .wiki-content').innerHTML = result.toHTML();
 					document.title += ' (' + (result.getProperty('title') ?? 'Unknown Page') + ')';
 				}
 			);
