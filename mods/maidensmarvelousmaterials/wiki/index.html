@@ -51,7 +51,7 @@
 					header += '<p>in: ' + category + '</p>'
 					header.innerHTML += '<h1>' + SHML.parseInlineMarkup(title).toHTML() + '</h1>';
 					let revisedOn = result.getProperty('revised')
-					if(revised !== undefined) header += '<p>Last Revised On: ' + revisedOn.trim(); + '</p>';
+					if(revisedOn !== undefined) header += '<p>Last Revised On: ' + revisedOn.trim(); + '</p>';
 					document.title += ' (' + title + ')';
 					document.querySelector('.wiki-image').src = 'images/' + (result.getProperty('picture') ?? 'default.png').trim();
 				}
