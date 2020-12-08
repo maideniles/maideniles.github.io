@@ -31,8 +31,8 @@
 		<script>
 			let usp = new URLSearchParams(window.location.search);
 			fetch('pages/' + (usp.get('category') ?? 'main') + '/' + (usp.get('entry') ?? 'index') + '.txt').then(
-				(text) => {
-					let result = SHML.parseMarkup(text);
+				(response) => {
+					let result = SHML.parseMarkup(response.text());
 					document.quertySelector('article .wiki-content').innerHTML = result.toHTML();
 					document.title += ' (' + (result.getProperty('title') ?? 'Unknown Page') + ')';
 				}
