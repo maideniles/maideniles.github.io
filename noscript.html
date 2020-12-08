@@ -30,6 +30,7 @@
 			body {
 				user-select: none;
 				background-color: var(--gray);
+				background: linear-gradient(315deg, var(--gray) 0%, #98ABBD 100%);
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -52,6 +53,9 @@
 			.w3-card {
 				border-radius: 25px;
 			}
+			.jsinfo {
+				border-radius: 0px;
+			}
 		</style>
 	</head>
 	<body>
@@ -63,7 +67,7 @@
 					<h1 class="w3-xxlarge"><strong>Error:<br>JavaScript Disabled <br class="w3-hide-medium w3-hide-large">¯\(°_o)/¯</strong></h1>
 					<script>write(`<h2 class="w3-medium"><strong><i>JavaScript is actually working fine. This is just the error page.</i><br class="w3-hide-medium w3-hide-large">（*＾-＾*）</strong></h2>`)</script>
 					<h2 class="w3-medium">The page you are trying to access needs JavaScript, and it is either unsupported or disabled on your browser. To view the page please enable JavaScript or update to a modern browser, and then reload the page or click <a class="hover-purple-text" href="" title="Reload">here</a>. Alternatively you can go to the home page <a class="hover-purple-text" href="/" title="Home">here</a>.</h2>
-					<div class="w3-card w3-padding w3-margin w3-container">
+					<div class="w3-card w3-padding w3-margin w3-container jsinfo">
 						<div class="w3-left-align w3-threequarter">
 							JavaScript <span class="dark-gray-text">[<strong>jah</strong>-v<i>uh</i>-skript]</span> (noun)
 						<br>
