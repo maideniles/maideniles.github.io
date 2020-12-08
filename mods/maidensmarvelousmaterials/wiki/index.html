@@ -30,9 +30,13 @@
 		</article>
 		<script>
 			let usp = new URLSearchParams(window.location.search);
-			fetch('pages/' + (usp.get('category') ?? 'main') + '/' + (usp.get('entry') ?? 'index') + '.txt').then(
-				(response) => {
-					let result = SHML.parseMarkup(response.text() + '');
+			fetch('pages/' + (usp.get('category') ?? 'main') + '/' + (usp.get('entry') ?? 'index') + '.txt')
+			.then(
+				response => response.text()
+			)
+			.then(
+				(text) => {
+					let result = SHML.parseMarkup(text);
 					document.quertySelector('article .wiki-content').innerHTML = result.toHTML();
 					document.title += ' (' + (result.getProperty('title') ?? 'Unknown Page') + ')';
 				}
