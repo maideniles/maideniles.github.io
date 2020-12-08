@@ -1,6 +1,6 @@
-title: Trees (*Demo Page*)
-picture: treess.png
-revised: 12/8/2020
+!title: Trees (*Demo Page*)
+!picture: treess.png
+!revised: 12/8/2020
 + Trees are cool
 + I like trees
 + This is cool |markup|

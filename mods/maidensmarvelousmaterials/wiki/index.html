@@ -46,14 +46,14 @@
 				(text) => {
 					let result = SHML.parseMarkup(text);
 					document.querySelector('.wiki-content').innerHTML = result.toHTML();
-					let title = (result.getProperty('title').trim() ?? usp.get('entry') ?? 'Unknown Page')
+					let title = (result.getProperty('title') ?? usp.get('entry') ?? 'Unknown Page').trim();
 					let header = document.querySelector('.wiki-header');
 					header += '<p>in: ' + category + '</p>'
 					header.innerHTML += '<h1>' + SHML.parseInlineMarkup(title).toHTML() + '</h1>';
-					let revisedOn = result.getProperty('revised').trim();
-					if(revised !== undefined) header += '<p>Last Revised On: ' + revisedOn + '</p>';
+					let revisedOn = result.getProperty('revised')
+					if(revised !== undefined) header += '<p>Last Revised On: ' + revisedOn.trim(); + '</p>';
 					document.title += ' (' + title + ')';
-					document.querySelector('.wiki-image').src = 'images/' + result.getProperty('picture').trim();
+					document.querySelector('.wiki-image').src = 'images/' + (result.getProperty('picture') ?? 'default.png').trim();
 				}
 			);
 		</script>
