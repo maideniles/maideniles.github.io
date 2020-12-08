@@ -26,7 +26,12 @@
 	</head>
 	<body>
 		<script>
-			write(SHML.parseMarkup('#*Hello*').toHTML())
+			let usp = new URLSearchParams(window.location.search);
+			fetch('pages/' + (usp.get('category') ?? 'main') + '/' + (usp.get('entry') ?? 'index') + '.txt').then(
+				(text) => write(text)
+			);
+			//let result = SHML.parseMarkup()
+			//write(result.toHTML())
 		</script>
 	</body>
 </html>
