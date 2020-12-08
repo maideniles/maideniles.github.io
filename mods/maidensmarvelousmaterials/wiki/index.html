@@ -36,8 +36,8 @@
 			</section>
 		</article>
 		<script>
-			let category = (usp.get('category') ?? 'main');
 			let usp = new URLSearchParams(window.location.search);
+			let category = (usp.get('category') ?? 'main');
 			fetch('pages/' + category + '/' + (usp.get('entry') ?? 'index') + '.txt')
 			.then(
 				response => response.text()
