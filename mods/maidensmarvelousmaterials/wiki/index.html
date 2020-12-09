@@ -48,10 +48,10 @@
 					let title = (result.getProperty('title') ?? usp.get('entry') ?? 'Unknown Page').trim();
 					let header = document.querySelector('.wiki-header');
 					header.innerHTML += '<p>in: ' + category + '</p>'
-					header.innerHTML += '<h1>' + SHML.parseInlineMarkup(title).toHTML() + '</h1>';
+					header.innerHTML += '<h1 class="wiki-header-title">' + SHML.parseInlineMarkup(title).toHTML() + '</h1>';
 					let revisedOn = result.getProperty('revised')
 					if(revisedOn !== undefined) header.innerHTML += '<p>Last Revised On: ' + revisedOn.trim(); + '</p>';
-					document.title += ' (' + title + ')';
+					document.title += ' (' + document.querySelector('.wiki-header-title').textContent + ')';
 					document.querySelector('.wiki-image').src = 'images/' + (result.getProperty('picture') ?? 'default.png').trim();
 				}
 			);
