@@ -47,6 +47,29 @@
 				max-width: 350px;
 				width: 100%;
 			}
+			.w3-card {
+				border-radius: 5px;
+			}
+			.purple-text {
+				color: var(--purple);
+			}
+			.download-link {
+				text-decoration: none;
+			}
+			.download-icon {
+				position: relative;
+				left: -50px;
+				top: 50px;
+				text-shadow:
+					-1px -1px 0 #fff,
+					1px -1px 0 #fff,
+					-1px 1px 0 #fff,
+					1px 1px 0 #fff;
+			}
+			.download-image {
+				position: relative;
+				left: 1em;
+			}
 		</style>
 	</head>
 	<body>
@@ -73,8 +96,16 @@
 						<iframe src="https://discord.com/widget?id=778673367926439966&theme=light" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
 					</div>
 					<div class="w3-card w3-white w3-margin w3-padding download-card">
-						<div class="w3-center">
-							<a href="" target="_blank"><img src="../../../assets/images/logo.png" class="download-image"><br>Download <i class="fa-fa-download"></i></a>
+						<div class="w3-center purple-text w3-margin">
+							<a href="" target="_blank" title="Download Official Mod" class="download-link w3-xlarge">
+								<img src="../../../assets/images/logo.png" class="download-image">
+								<i class="fa fa-download w3-jumbo download-icon"></i>
+								<br>
+								<br>
+								<b>
+									Dowload for 1.14
+								</b>
+							</a>
 						</div>
 					</div>
 				</div>
