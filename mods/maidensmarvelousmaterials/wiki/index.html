@@ -5,25 +5,40 @@
 		<script src="/assets/libs/js/shml.js"></script>
 		<title>Maideniles  - Maiden's Marvelous Materials Wiki</title>
 		<meta charset="UTF-8">
-		<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/icons/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/icons/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/assets/images/icons/favicon-16x16.png">
-		<link rel="manifest" href="/assets/images/icons/site.webmanifest">
-		<link rel="mask-icon" href="/assets/images/icons/safari-pinned-tab.svg" color="#0075ff">
-		<link rel="shortcut icon" href="/assets/images/icons/favicon.ico">
+		<link rel="apple-touch-icon" sizes="180x180" href="../../../assets/images/icons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="../../../assets/images/icons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="../../../assets/images/icons/favicon-16x16.png">
+		<link rel="manifest" href="../../../assets/images/icons/site.webmanifest">
+		<link rel="mask-icon" href="../../../assets/images/icons/safari-pinned-tab.svg" color="#0075ff">
+		<link rel="shortcut icon" href="../../../assets/images/icons/favicon.ico">
 		<meta name="msapplication-TileColor" content="#2d89ef">
-		<meta name="msapplication-config" content="/assets/images/icons/browserconfig.xml">
+		<meta name="msapplication-config" content="../../../assets/images/icons/browserconfig.xml">
 		<meta name="theme-color" content="#ffffff">
 		<meta name="description" content="Maiden's Marvelous Materials Wiki">
 		<meta name="keywords" content="Maiden, Marvelous, Materials, Wiki">
 		<meta name="author" content="Tim Wasinger">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="/assets/libs/css/w3-css-4.0.0.css">
-		<link rel="stylesheet" href="/assets/libs/css/font-awesome-4.7.0.min.css">
+		<link rel="stylesheet" href="../../../assets/libs/css/w3-css-4.0.0.css">
+		<link rel="stylesheet" href="../../../assets/libs/css/font-awesome-4.7.0.min.css">
 		<style>
+			html, body {
+				width: 100%;
+				margin: 0;
+			}
+			.background-image {
+				height: 100%;
+				width: 100vw;
+				object-fit: cover;
+				z-index: -1;
+				position: absolute;
+				top: 0;
+				left: 0;
+				filter: blur(3px) grayscale(5%);
+			}
 		</style>
 	</head>
 	<body>
+		<img class="background-image" src="images/trees.png">
 		<article>
 			<header class="wiki-header">
 			
@@ -35,6 +50,8 @@
 			</section>
 		</article>
 		<script>
+			let backgrounds = ['forest0.png', 'forest1.png', 'forest2.png', 'orchard0.png', 'beach0.png', 'beach1.png']
+			document.querySelector('.background-image').src = '../../../assets/images/backgrounds/' + backgrounds[Math.floor(Math.random() * backgrounds.length)]
 			let usp = new URLSearchParams(window.location.search);
 			let category = (usp.get('category') ?? 'main');
 			fetch('pages/' + category + '/' + (usp.get('entry') ?? 'index') + '.txt')
