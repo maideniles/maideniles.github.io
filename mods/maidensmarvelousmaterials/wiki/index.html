@@ -42,16 +42,20 @@
 	</head>
 	<body>
 		<img class="background-image" src="images/trees.png">
-		<article>
-			<header class="wiki-header">
-			
-			</header>
-			<hr>
-			<img class="wiki-image">
-			<section class="wiki-content">
-			
-			</section>
-		</article>
+			<article>
+				<div class="w3-card w3-white w3-margin w3-padding">
+					<header class="wiki-header">
+					
+					</header>
+					<img class="wiki-image">
+				</div>
+				<div class="w3-card w3-white w3-margin w3-padding">
+					<section class="wiki-content">
+					
+					</section>
+				</div>
+			</article>
+		</div>
 		<script>
 			let backgrounds = ['forest0.png', 'forest1.png', 'forest2.png', 'orchard0.png', 'beach0.png', 'beach1.png']
 			document.querySelector('.background-image').src = '../../../assets/images/backgrounds/' + backgrounds[Math.floor(Math.random() * backgrounds.length)]
