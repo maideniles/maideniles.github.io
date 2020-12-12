@@ -117,23 +117,18 @@
 			document.querySelector('.background-image').src = '../../../assets/images/backgrounds/' + backgrounds[Math.floor(Math.random() * backgrounds.length)]
 			let usp = new URLSearchParams(window.location.search);
 			let category = (usp.get('category') ?? 'main');
-			fetch('pages/' + category + '/' + (usp.get('entry') ?? 'index') + '.txt')
-			.then(
-				response => response.text()
-			)
-			.then(
-				(text) => {
-					let result = SHML.parseMarkup(text);
-
-					let title = (result.getProperty('title') ?? usp.get('entry') ?? 'Unknown Page').trim();
-
-					let revisedOn = result.getProperty('revised')
-					
-					
-					let image = (result.getProperty('picture') ?? 'default.png').trim();
-					renderPage(title, category, result.toHTML(), revisedOn, image);
-				}
-			);
+			async function loadWiki() {
+				let response = await fetch('pages/' + category + '/' + (usp.get('entry') ?? 'index') + '.txt');
+				if(!response.ok) return void renderPage('Error Loading Page', undefined, `An error has occurred while loading the page.<br><code>Status Code: ${response.status}<br>Ok: ${response.ok}</code>`, undefined, 'error.png');
+				let text = await response.text();
+				
+				let result = SHML.parseMarkup(text);
+				let title = (result.getProperty('title') ?? usp.get('entry') ?? 'Unknown Page').trim();
+				let revisedOn = result.getProperty('revised')
+				let image = (result.getProperty('picture') ?? 'default.png').trim();
+				renderPage(title, category, result.toHTML(), revisedOn, image);
+	
+			}
 			function renderPage(title, category, content, revisedOn, image = 'default.png') {
 				document.querySelector('.wiki-content').innerHTML = content;
 				document.querySelector('.wiki-image').src = 'images/' + image;
@@ -143,6 +138,7 @@
 				if(revisedOn !== undefined) header.innerHTML += '<p>Last Revised On: ' + revisedOn.trim(); + '</p>';
 				document.title += ' (' + document.querySelector('.wiki-header-title').textContent + ')';
 			}
+			loadWiki();
 		</script>
 	</body>
 </html>
