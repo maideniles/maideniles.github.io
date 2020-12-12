@@ -116,6 +116,7 @@
 			let backgrounds = ['forest0.png', 'forest1.png', 'forest2.png', 'orchard0.png', 'beach0.png', 'beach1.png']
 			document.querySelector('.background-image').src = '../../../assets/images/backgrounds/' + backgrounds[Math.floor(Math.random() * backgrounds.length)]
 			let args = window.location.search.substring(1).split(':');
+			
 			let category = args[0] ?? 'missingno';
 			let entry = args[1] ?? 'missingno';
 			async function loadWiki() {
