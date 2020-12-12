@@ -124,17 +124,25 @@
 			.then(
 				(text) => {
 					let result = SHML.parseMarkup(text);
-					document.querySelector('.wiki-content').innerHTML = result.toHTML();
+
 					let title = (result.getProperty('title') ?? usp.get('entry') ?? 'Unknown Page').trim();
-					let header = document.querySelector('.wiki-header');
-					header.innerHTML += '<p>in: ' + category + '</p>'
-					header.innerHTML += '<h1 class="wiki-header-title">' + SHML.parseInlineMarkup(title).toHTML() + '</h1>';
+
 					let revisedOn = result.getProperty('revised')
-					if(revisedOn !== undefined) header.innerHTML += '<p>Last Revised On: ' + revisedOn.trim(); + '</p>';
-					document.title += ' (' + document.querySelector('.wiki-header-title').textContent + ')';
-					document.querySelector('.wiki-image').src = 'images/' + (result.getProperty('picture') ?? 'default.png').trim();
+					
+					
+					let image = (result.getProperty('picture') ?? 'default.png').trim();
+					renderPage(title, category, result.toHTML(), revisedOn, image);
 				}
 			);
+			function renderPage(title, category, content, revisedOn, image = 'default.png') {
+				document.querySelector('.wiki-content').innerHTML = content;
+				document.querySelector('.wiki-image').src = 'images/' + image;
+				let header = document.querySelector('.wiki-header');
+				if(category !== undefined) header.innerHTML += '<p>in: ' + category + '</p>'
+				header.innerHTML += '<h1 class="wiki-header-title">' + SHML.parseInlineMarkup(title).toHTML() + '</h1>';
+				if(revisedOn !== undefined) header.innerHTML += '<p>Last Revised On: ' + revisedOn.trim(); + '</p>';
+				document.title += ' (' + document.querySelector('.wiki-header-title').textContent + ')';
+			}
 		</script>
 	</body>
 </html>
