@@ -125,9 +125,9 @@
 				
 				let result = SHML.parseMarkup(text);
 				
-				let title = (result.getProperty('title') ?? usp.get('entry') ?? 'Unknown Page').trim();
+				let title = (result.getProperty('title') ?? entry).trim();
 				let revisedOn = result.getProperty('revised')
-				let image = (result.getProperty('picture') ?? 'default.png').trim();
+				let image = (result.getProperty('picture') ?? (entry + '.png')).trim();
 				renderPage(title, category, result.toHTML(), revisedOn, image);
 			}
 			function renderPage(title, category, content, revisedOn, image = 'default.png') {
