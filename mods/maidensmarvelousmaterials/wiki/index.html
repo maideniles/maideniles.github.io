@@ -131,9 +131,9 @@
 				
 				renderPage(title, category, result.toHTML(), revisedOn, image);
 			}
-			function renderPage(title, category, content, revisedOn, image = 'default.png') {
+			function renderPage(title, category, content, revisedOn, image) {
 				document.querySelector('.wiki-content').innerHTML = content;
-				document.querySelector('.wiki-image').src = 'images/' + image;
+				if(image !== '' && image !== undefined) document.querySelector('.wiki-image').src = 'images/' + image;
 				let header = document.querySelector('.wiki-header');
 				if(category !== undefined) header.innerHTML += '<p>in: ' + category + '</p>'
 				header.innerHTML += '<h1 class="wiki-header-title">' + SHML.parseInlineMarkup(title).toHTML() + '</h1>';
