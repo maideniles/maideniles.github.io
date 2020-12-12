@@ -119,6 +119,7 @@
 			let category = (usp.get('category') ?? 'main');
 			async function loadWiki() {
 				let response = await fetch('pages/' + category + '/' + (usp.get('entry') ?? 'index') + '.txt');
+				console.log(response.ok)
 				if(!response.ok) return void renderPage('Error Loading Page', undefined, `An error has occurred while loading the page.<br><code>Status Code: ${response.status}<br>Ok: ${response.ok}</code>`, undefined, 'error.png');
 				let text = await response.text();
 				
