@@ -115,9 +115,9 @@
 		<script>
 			let backgrounds = ['forest0.png', 'forest1.png', 'forest2.png', 'orchard0.png', 'beach0.png', 'beach1.png']
 			document.querySelector('.background-image').src = '../../../assets/images/backgrounds/' + backgrounds[Math.floor(Math.random() * backgrounds.length)]
-			let usp = new URLSearchParams(window.location.search);
-			let category = usp.get('category') ?? 'missingno';
-			let entry = usp.get('entry') ?? 'missingno';
+			let args = window.location.search.split(':');
+			let category = args[0] ?? 'missingno';
+			let entry = args[1] ?? 'missingno';
 			async function loadWiki() {
 				let response = await fetch('pages/' + category + '/' + entry + '.txt');
 				if(!response.ok) return void renderErrorPage(response);
@@ -128,7 +128,6 @@
 				let revisedOn = result.getProperty('revised')
 				let image = (result.getProperty('picture') ?? 'default.png').trim();
 				renderPage(title, category, result.toHTML(), revisedOn, image);
-	
 			}
 			function renderPage(title, category, content, revisedOn, image = 'default.png') {
 				document.querySelector('.wiki-content').innerHTML = content;
