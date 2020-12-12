@@ -125,9 +125,9 @@
 				
 				let result = SHML.parseMarkup(text);
 				
-				let title = (result.getProperty('title') ?? entry).trim();
-				let revisedOn = result.getProperty('revised')
-				let image = (result.getProperty('picture') ?? (entry + '.png')).trim();
+				let title = (result.getProperty('title') ?? entry[0].toUpperCase() + entry.substring(1)).trim();
+				let revisedOn = result.getProperty('revised');
+				let image = (result.getProperty('picture') ?? '').trim();
 				renderPage(title, category, result.toHTML(), revisedOn, image);
 			}
 			function renderPage(title, category, content, revisedOn, image = 'default.png') {
