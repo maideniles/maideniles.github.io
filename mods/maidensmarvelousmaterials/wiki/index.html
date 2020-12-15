@@ -152,7 +152,7 @@
 				if(!response.ok) return void console.log('Error Loading Pages');
 				let text = await response.text();
 				let pages = {};
-				for(entry of text.split('\n')) {
+				for(let entry of text.split('\n')) {
 					entry = entry.trim();
 					if(entry.startsWith('//')) continue;
 					let args = entry.split(':');
