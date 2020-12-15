@@ -134,6 +134,10 @@
 				let args = window.location.search.substring(1).split(':');
 				let category = args[0] ?? 'missingno';
 				let entry = args[1] ?? 'missingno';
+				
+				if(category === 'main' && entry === 'random') {
+					return void (window.location.search = '?foo')
+				}
 				let response = await fetch('pages/' + category + '/' + entry + '.txt');
 				if(!response.ok) return void renderErrorPage(response);
 				let text = await response.text();
@@ -161,7 +165,7 @@
 					if(pages[category] === undefined) pages[category] = {};
 					pages[category][path[1]] = args[1];
 				}
-				console.log(pages);
+				return pages;
 			}
 			function renderPage(title, category, content, revisedOn, image) {
 				document.querySelector('.wiki-content').innerHTML = content;
