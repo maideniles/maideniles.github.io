@@ -137,7 +137,7 @@
 				let entry = args[1] ?? 'missingno';
 				
 				if(category === 'special' && entry === 'random') {
-					return void (window.location.search = '?foo')
+					return void (window.location.search = '?' + getRandomPage());
 				}
 				let response = await fetch('pages/' + category + '/' + entry + '.txt');
 				if(!response.ok) return void renderErrorPage(response);
@@ -180,6 +180,14 @@
 			async function initWiki() {
 				if(pageMap === undefined) pageMap = await loadWikiPages();
 				await loadWikiContent();
+			}
+			function getRandomPage() {
+				if(pageMap === undefined) return 'missingno.missingno';
+				let keys = Object.keys(pageMap);
+				let category = keys[keys.length * Math.random() | 0];
+				keys = Object.keys(pageMap[category]);
+				let entry = keys[keys.length * Math.random() | 0];
+				return category + '.' + entry;
 			}
 			function renderErrorPage(response) {
 				renderPage('Error Loading Page', undefined, `An error has occurred while loading the page.<br><code>Status Code: ${response.status}<br>Ok: ${response.ok}<br>Details: ${response.statusText}</code>`, undefined, 'error.png');
