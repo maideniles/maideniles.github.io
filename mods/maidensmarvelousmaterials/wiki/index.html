@@ -152,15 +152,14 @@
 				if(!response.ok) return void console.log('Error Loading Pages');
 				let text = await response.text();
 				let pages = {};
-				for(let entry of text.split('\n')) {
-					entry = entry.trim();
-					if(entry.startsWith('//')) continue;
-					let args = entry.split(':');
+				for(let line of text.split('\n')) {
+					line = line.trim();
+					if(line.startsWith('//')) continue;
+					let args = line.split(':');
 					let path = args[0].split('.');
 					let category = path[0];
-					let entry = path[1];
 					if(pages[category] === undefined) pages[category] = {};
-					pages[category][entry] = args[1];
+					pages[category][path[1]] = args[1];
 				}
 				console.log(pages);
 			}
