@@ -1,5 +1,5 @@
 //Main
-main:index
+main.index:Home
 //Worldgen
-worldgen:trees
-worldgen:index
+worldgen.trees:Trees
+worldgen.index:World Generation
