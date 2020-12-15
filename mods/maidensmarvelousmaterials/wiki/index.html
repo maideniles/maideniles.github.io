@@ -130,7 +130,7 @@
 		<script>
 			let backgrounds = ['forest0.png', 'forest1.png', 'forest2.png', 'orchard0.png', 'beach0.png', 'beach1.png']
 			document.querySelector('.background-image').src = '../../../assets/images/backgrounds/' + backgrounds[Math.floor(Math.random() * backgrounds.length)]
-			async function loadWiki() {
+			async function loadWikiContent() {
 				let args = window.location.search.substring(1).split(':');
 				let category = args[0] ?? 'missingno';
 				let entry = args[1] ?? 'missingno';
@@ -147,6 +147,13 @@
 				
 				renderPage(title, category, result.toHTML(), revisedOn, image);
 			}
+			async function loadWikiPages() {
+				let response = await fetch('pages/pages.txt');
+				if(!response.ok) return void console.log('Error Loading Pages');
+				let text = await response.text();
+				
+				console.log(text);
+			}
 			function renderPage(title, category, content, revisedOn, image) {
 				document.querySelector('.wiki-content').innerHTML = content;
 				if(image !== '' && image !== undefined) document.querySelector('.wiki-image').src = 'images/' + image;
@@ -159,7 +166,7 @@
 			function renderErrorPage(response) {
 				renderPage('Error Loading Page', undefined, `An error has occurred while loading the page.<br><code>Status Code: ${response.status}<br>Ok: ${response.ok}<br>Details: ${response.statusText}</code>`, undefined, 'error.png');
 			}
-			loadWiki();
+			loadWikiContent();
 		</script>
 	</body>
 </html>
