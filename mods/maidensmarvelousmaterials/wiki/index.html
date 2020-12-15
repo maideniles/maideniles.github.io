@@ -132,7 +132,7 @@
 			document.querySelector('.background-image').src = '../../../assets/images/backgrounds/' + backgrounds[Math.floor(Math.random() * backgrounds.length)]
 			let pageMap;
 			async function loadWikiContent() {
-				let args = window.location.search.substring(1).split(':');
+				let args = window.location.search.substring(1).split('.');
 				let category = args[0] ?? 'missingno';
 				let entry = args[1] ?? 'missingno';
 				
