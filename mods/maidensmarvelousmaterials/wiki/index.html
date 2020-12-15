@@ -178,7 +178,11 @@
 				document.title += ' (' + document.querySelector('.wiki-header-title').textContent + ')';
 			}
 			async function initWiki() {
-				if(pageMap === undefined) pageMap = await loadWikiPages();
+				pageMap = JSON.parse(sessionStorage.getItem('pageMap') ?? null) ?? undefined;
+				if(pageMap === undefined) {
+					pageMap = await loadWikiPages();
+					sessionStorage.setItem('pageMap', JSON.stringify(pageMap));
+				}
 				await loadWikiContent();
 			}
 			function getRandomPage() {
