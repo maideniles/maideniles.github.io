@@ -154,7 +154,7 @@
 			}
 			async function loadWikiPages() {
 				let response = await fetch('pages/pages.txt');
-				if(!response.ok) return void console.log('Error Loading Pages');
+				if(!response.ok) return {};
 				let text = await response.text();
 				let pages = {};
 				for(let line of text.split('\n')) {
