@@ -175,7 +175,7 @@
 				document.querySelector('.wiki-content').innerHTML = content;
 				if(image !== '' && image !== undefined) document.querySelector('.wiki-image').src = 'images/' + image;
 				let header = document.querySelector('.wiki-header');
-				if(category !== undefined) header.innerHTML += '<p>in: ' + category + '</p>'
+				if(category !== undefined) header.innerHTML += '<p>in: ' + getCategoryName(category) + '</p>'
 				header.innerHTML += '<h1 class="wiki-header-title">' + SHML.parseInlineMarkup(title).toHTML() + '</h1>';
 				if(revisedOn !== undefined) header.innerHTML += '<p>Last Revised On: ' + revisedOn.trim(); + '</p>';
 				document.title += ' (' + document.querySelector('.wiki-header-title').textContent + ')';
@@ -195,6 +195,9 @@
 				keys = Object.keys(pageMap[category]);
 				let entry = keys[keys.length * Math.random() | 0];
 				return category + ':' + entry;
+			}
+			function getCategoryName(category) {
+				return pageMap?.[category]?.index ?? category;
 			}
 			function renderErrorPage(response) {
 				renderPage('Error Loading Page', undefined, `An error has occurred while loading the page.<br><code>Status Code: ${response.status}<br>Ok: ${response.ok}<br>Details: ${response.statusText}</code>`, undefined, 'error.png');
