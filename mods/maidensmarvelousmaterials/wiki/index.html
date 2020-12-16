@@ -186,9 +186,9 @@
 				if(pageMap === undefined) return;
 				let pages = document.querySelector('.wiki-pages');
 				for(let category in pageMap) {
-					let contents = '';
-					for(let page in pageMap[category]) contents += '<a href=?' + category + ':' + page + '>' + pageMap[category][page] + '</a>';
-					pages.innerHTML += '<details><summary>' + getCategoryName(category) + '</summary>' + contents + '</details>';
+					let contents = [];
+					for(let page in pageMap[category]) contents.push('<a href=?' + category + ':' + page + '>' + pageMap[category][page] + '</a>');
+					pages.innerHTML += '<details><summary>' + getCategoryName(category) + '</summary>' + contents.join(':') + '</details>';
 				}
 			}
 			async function initWiki() {
