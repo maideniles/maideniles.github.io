@@ -106,7 +106,8 @@
 					</div>
 				</article>
 				<div class="w3-card w3-white w3-margin w3-padding">
-						Test
+					<div class="wiki-pages">
+					</div>
 				</div>
 			</div>
 			<div class="w3-quarter">
@@ -180,6 +181,13 @@
 				if(revisedOn !== undefined) header.innerHTML += '<p>Last Revised On: ' + revisedOn.trim(); + '</p>';
 				document.title += ' (' + document.querySelector('.wiki-header-title').textContent + ')';
 			}
+			function renderOtherPages() {
+				if(pageMap === undefined) return;
+				let pages = document.querySelector('.wiki-pages');
+				for(let category in pageMap) {
+					pages.innerHTML += '<details class="w3-center"><summary>' + getCategoryName(category) + '</summary>Hello World</details>';
+				}
+			}
 			async function initWiki() {
 				pageMap = JSON.parse(sessionStorage.getItem('pageMap') ?? null) ?? undefined;
 				if(pageMap === undefined) {
@@ -187,6 +195,7 @@
 					sessionStorage.setItem('pageMap', JSON.stringify(pageMap));
 				}
 				await loadWikiContent();
+				renderOtherPages();
 			}
 			function getRandomPage() {
 				if(pageMap === undefined) return 'missingno:missingno';
