@@ -3,3 +3,6 @@ main:index;Home
 //Worldgen
 worldgen:trees;Trees
 worldgen:index;World Generation
+//Items
+items:index;Items
+items:sticks;Sticks
