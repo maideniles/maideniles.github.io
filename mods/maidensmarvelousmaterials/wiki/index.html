@@ -187,7 +187,7 @@
 				let pages = document.querySelector('.wiki-pages');
 				for(let category in pageMap) {
 					let contents = '';
-					for(let page in pageMap[category]) contents += '<a>' + pageMap[category][page] + '</a>';
+					for(let page in pageMap[category]) contents += '<a href=?' + category + ':' + page + '>' + pageMap[category][page] + '</a>';
 					pages.innerHTML += '<details><summary>' + getCategoryName(category) + '</summary>' + contents + '</details>';
 				}
 			}
