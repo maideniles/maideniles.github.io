@@ -6,3 +6,8 @@ worldgen:index;World Generation
 //Items
 items:index;Items
 items:sticks;Sticks
+//Other
+blocks:index;Blocks
+enchantments:index;Enchantments
+mechanics:index;Game Mechanics
+potions:index;Potions

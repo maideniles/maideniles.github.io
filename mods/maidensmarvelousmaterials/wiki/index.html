@@ -164,7 +164,7 @@
 				let pages = {};
 				for(let line of text.split('\n')) {
 					line = line.trim();
-					if(line.startsWith('//')) continue;
+					if(line === '' || line.startsWith('//')) continue;
 					let args = line.split(';');
 					let path = args[0].split(':');
 					let category = path[0];
