@@ -136,7 +136,7 @@
 				<div class="w3-container">
 				<span onclick="setModalDisplay('none')" class="w3-button w3-display-topright">&times;</span>
 				<p class="w3-large search-header"><i class="fa fa-search"></i> Search Results</p>
-				<div id="search-results" name="search-results"></div>
+				<div id="search-results" name="search-results" class="w3-margin"></div>
 				</div>
 			</div>
 		</div>
@@ -278,7 +278,7 @@
 				modal.innerHTML = '';
 				if(results.length === 0) modal.innerHTML = '<a class="search-result">No Results ╯︿╰</a>';
 				for(let result of results)
-					modal.innerHTML += '<a class="search-result" href="' + result + '" title="' + result + '">' + result + '</a>';
+					modal.innerHTML += '<a class="search-result" href="?' + result + '" title="' + result + '">' + result + '</a>';
 				setModalDisplay('block');
 				alert("Hi, currently the search is useless.");
 			}
