@@ -86,10 +86,25 @@
 				margin-top: 8px;
 				margin-bottom: 8px;
 			}
+			.bar {
+				background-color: var(--purple);
+				box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+			}
+			.bar-item {
+				text-decoration: none;
+				cursor: pointer;
+			}
+			.bar-item:hover {
+				background-color: var(--gray);
+			}
 		</style>
 	</head>
 	<body>
 		<img class="background-image" src="images/trees.png">
+		<div class="w3-bar bar">
+			<a class="w3-bar-item bar-item" href="?main:index">Home</a>
+			<a class="w3-bar-item bar-item" href="?special:random">Random Page</a>
+		</div>
 		<div class="w3-row">
 			<div class="w3-threequarter">
 				<article>
