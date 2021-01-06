@@ -11,4 +11,4 @@ blocks:index;Blocks
 enchantments:index;Enchantments
 mechanics:index;Game Mechanics
 potions:index;Potions
-credits:index;Credits
+credits:index;Mod Credits
