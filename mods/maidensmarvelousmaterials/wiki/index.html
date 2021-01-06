@@ -93,17 +93,33 @@
 			.bar-item {
 				text-decoration: none;
 				cursor: pointer;
+				font-weight: bold;
+				font-size: larger;
+				color: white;
+			}
+			.bar-search {
+				border: none;
+				outline: none;
+				vertical-align: middle;
+			}
+			.logo {
+				height: 43px;
 			}
 			.bar-item:hover {
 				background-color: var(--gray);
+				color: black;
 			}
 		</style>
 	</head>
 	<body>
 		<img class="background-image" src="images/trees.png">
 		<div class="w3-bar bar">
-			<a class="w3-bar-item bar-item" href="?main:index">Home</a>
-			<a class="w3-bar-item bar-item" href="?special:random">Random Page</a>
+			<img src="../../../assets/images/logo.png" class="logo w3-bar-item">
+			<a class="w3-bar-item bar-item" href="?main:index"><i class="fa fa-home"></i> Home</a>
+			<a class="w3-bar-item bar-item" href="?special:random"><i class="fa fa-random"></i> Random Page</a>
+			<a href="https://www.curseforge.com/minecraft/mc-mods/maidens-marvelous-materials/download" target="_blank" class="w3-bar-item bar-item"><i class="fa fa-download"></i> Dowload</a>
+			<a class="w3-right w3-bar-item bar-item" onclick="searchWiki()"><i class="fa fa-search"></i></a>
+			<a class="w3-right w3-bar-item"><input id="search" name="search" type="text" placeholder="Search..." class="bar-search" onkeydown="if(event.key === 'Enter') searchWiki()"></a>
 		</div>
 		<div class="w3-row">
 			<div class="w3-threequarter">
@@ -230,6 +246,37 @@
 				renderPage('Error Loading Page', undefined, `An error has occurred while loading the page.<br><code>Status Code: ${response.status}<br>Ok: ${response.ok}<br>Details: ${response.statusText}</code>`, undefined, 'error.png');
 			}
 			initWiki();
+			function searchWiki() {
+				let results = [];
+				let query = document.querySelector('#search').value;
+				for(let word of query.replace(/[^a-zA-Z\d]/g, ' ').trim().toLowerCase().split(' ').map(o => o.replace(/[\s]/, '')))
+				for(let category in pageMap) {
+					let catMatch = levenshteinDistance(word, category) < 4 || levenshteinDistance(word, getCategoryName(category)) < 4;
+					for(let page in pageMap[category]) if(catMatch || levenshteinDistance(word, page) < 4 || levenshteinDistance(word, pageMap[category][page]) < 4) results.push(category + ':' + page);
+				}
+				console.log(results)
+				alert("Hi, currently the search is useless.");
+			}
+			function levenshteinDistance(str1 = '', str2 = '') {
+				const track = Array(str2.length + 1).fill(null).map(() =>
+				Array(str1.length + 1).fill(null));
+				for (let i = 0; i <= str1.length; i += 1)
+					track[0][i] = i;
+				for (let j = 0; j <= str2.length; j += 1)
+					track[j][0] = j;
+				for (let j = 1; j <= str2.length; j += 1) {
+					for (let i = 1; i <= str1.length; i += 1) {
+						const indicator = str1[i - 1] === str2[j - 1] ? 0 : 1;
+						track[j][i] = Math.min(
+							track[j][i - 1] + 1, // deletion
+							track[j - 1][i] + 1, // insertion
+							track[j - 1][i - 1] + indicator, // substitution
+						);
+					}
+				}
+				return track[str2.length][str1.length];
+			}
+
 		</script>
 	</body>
 </html>
