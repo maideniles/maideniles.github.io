@@ -280,7 +280,6 @@
 				for(let result of results)
 					modal.innerHTML += '<a class="search-result" href="?' + result + '" title="' + result + '">' + result + '</a>';
 				setModalDisplay('block');
-				alert("Hi, currently the search is useless.");
 			}
 			function levenshteinDistance(str1 = '', str2 = '') {
 				const track = Array(str2.length + 1).fill(null).map(() =>
