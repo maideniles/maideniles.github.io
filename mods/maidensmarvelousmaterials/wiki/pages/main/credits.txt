@@ -7,7 +7,7 @@ p: Mod code, website, book, squasher of bugs.
 #ZOnlyKroks
 p: Mod code, github, discord.
 
-#RedStoneTim:
+#RedStoneTim
 p: Mod code
 
 #Maideniles
