@@ -109,6 +109,15 @@
 				background-color: var(--gray);
 				color: black;
 			}
+			.search-header {
+				color: var(--purple);
+			}
+			.search-result {
+				text-decoration: none;
+				cursor: pointer;
+				color: var(--alt-dark-gray);
+				display: block;
+			}
 		</style>
 	</head>
 	<body>
@@ -121,6 +130,17 @@
 			<a class="w3-right w3-bar-item bar-item" onclick="searchWiki()"><i class="fa fa-search"></i></a>
 			<a class="w3-right w3-bar-item"><input id="search" name="search" type="text" placeholder="Search..." class="bar-search" onkeydown="if(event.key === 'Enter') searchWiki()"></a>
 		</div>
+
+		<div id="modal" class="w3-modal" onclick="setModalDisplay('none')">
+			<div class="w3-modal-content" onclick="event.stopPropagation();">
+				<div class="w3-container">
+				<span onclick="setModalDisplay('none')" class="w3-button w3-display-topright">&times;</span>
+				<p class="w3-large search-header"><i class="fa fa-search"></i> Search Results</p>
+				<div id="search-results" name="search-results"></div>
+				</div>
+			</div>
+		</div>
+
 		<div class="w3-row">
 			<div class="w3-threequarter">
 				<article>
@@ -254,7 +274,12 @@
 					let catMatch = levenshteinDistance(word, category) < 4 || levenshteinDistance(word, getCategoryName(category)) < 4;
 					for(let page in pageMap[category]) if(catMatch || levenshteinDistance(word, page) < 4 || levenshteinDistance(word, pageMap[category][page]) < 4) results.push(category + ':' + page);
 				}
-				console.log(results)
+				let modal = document.getElementById('search-results');
+				modal.innerHTML = '';
+				if(results.length === 0) modal.innerHTML = '<a class="search-result">No Results ╯︿╰</a>';
+				for(let result of results)
+					modal.innerHTML += '<a class="search-result" href="' + result + '" title="' + result + '">' + result + '</a>';
+				setModalDisplay('block');
 				alert("Hi, currently the search is useless.");
 			}
 			function levenshteinDistance(str1 = '', str2 = '') {
@@ -276,7 +301,9 @@
 				}
 				return track[str2.length][str1.length];
 			}
-
+			function setModalDisplay(display) {
+				document.getElementById('modal').style.display = display;
+			}
 		</script>
 	</body>
 </html>
