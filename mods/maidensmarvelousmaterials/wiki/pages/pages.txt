@@ -1,5 +1,6 @@
 //Main
 main:index;Home
+main:credits;Mod Credits
 //Worldgen
 worldgen:trees;Trees
 worldgen:index;World Generation
@@ -11,4 +12,4 @@ blocks:index;Blocks
 enchantments:index;Enchantments
 mechanics:index;Game Mechanics
 potions:index;Potions
-main:credits;Mod Credits
+
