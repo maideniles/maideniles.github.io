@@ -89,7 +89,7 @@
 			.bar {
 				background-color: var(--purple);
 				box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
-				position: sticky;
+				position: fixed;
 			}
 			.bar-item {
 				text-decoration: none;
@@ -125,6 +125,9 @@
 			details summary::-webkit-details-marker {
 				cursor: pointer;
 			}
+			.bar-placeholder {
+				visibility: hidden;
+			}
 		</style>
 	</head>
 	<body>
@@ -136,6 +139,9 @@
 			<a href="https://www.curseforge.com/minecraft/mc-mods/maidens-marvelous-materials/download" target="_blank" class="w3-bar-item bar-item"><i class="fa fa-download"></i> Dowload</a>
 			<a class="w3-right w3-bar-item bar-item" onclick="searchWiki()"><i class="fa fa-search"></i></a>
 			<a class="w3-right w3-bar-item"><input id="search" name="search" type="text" placeholder="Search..." class="bar-search" onkeydown="if(event.key === 'Enter') searchWiki()"></a>
+		</div>
+		<div class="w3-bar bar-placeholder">
+			<a class="w3-bar-item bar-item" href="?main:index"><i class="fa fa-home"></i> Home</a>
 		</div>
 
 		<div id="modal" class="w3-modal" onclick="setModalDisplay('none')">
