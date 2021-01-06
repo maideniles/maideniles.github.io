@@ -1,5 +1,6 @@
 //Main
 main:index;Home
+main:credits;Mod Credits
 //Worldgen
 worldgen:trees;Trees
 worldgen:index;World Generation
