@@ -1,6 +1,29 @@
 !title: Trees (*Demo Page*)
 !picture: trees.png
 !revised: 12/8/2020
+##Ornamental Forest Trees
+##Cedar 
+p: Warm brown colored bark, with warm, reddish wood on the inside.  Foliage is bright green, non-flowering, no vines.
+##Crabapple 
+p: Pale brown bark, with grayish wood on the inside.  Foliage is dark pink/bright red, flowering, with vines.
+##Dogwood 
+p: Light brown bark, with warm, pinkish wood inside.  Foliage is pink and white, flowering, with vines.
+##Jacaranda 
+p:Warm tan colored bark, with bright, godenrod colored wood.  Foliage is purple and pink, flowering.
+##Laburnum: 
+p: Dark brown bark, with yellow/brown rings and yellow/brown streaked wood.  Foliage is yellow, flowering, with vines.
+##Paulownia 
+p: Grayish-brown bark, with very pale, cool toned wood.  Foliage is cyan/blue, flowering, with vines.
+##Carolina Silverbell 
+p: Dark  brown, orange and green-striped bark, with warm peach-colored wood inside.  Foliage is white, flowering, with vines.
+##Wisteria 
+p: Dark brown/gray streaked bark, with pale, warm white wood inside.  Foliage is blue/violet, flowering, with vines.
+##Jade
+p: Pale brown bark, with pale, cool-white wood. Foliage is green, flowering, with vines.
+##Poinciana
+p: Dark brownish/red bark with lighter reddish/brown wood. Foliage is orange, flowering, with vines.
+
+
 + Trees are cool
 + I like trees
 + This is cool |markup|
