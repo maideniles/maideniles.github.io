@@ -152,15 +152,22 @@
 				font-size: 1em;
 				font-weight: bold;
 			}
+			@media (max-width:600px) {
+				#search {
+					max-width: 100px;
+				}
+			}
 		</style>
 	</head>
 	<body>
 		<img class="background-image" src="images/trees.png">
 		<div class="w3-bar bar">
-			<img src="../../../assets/images/logo.png" class="logo w3-bar-item">
+			<a class="" href="?main:index"><img src="../../../assets/images/logo.png" class="logo w3-bar-item"></a>
+			<div class="w3-hide-small">
 			<a class="w3-bar-item bar-item" href="?main:index"><i class="fa fa-home"></i><span class="w3-hide-small"> Home</span></a>
 			<a class="w3-bar-item bar-item" href="?special:random"><i class="fa fa-random"></i><span class="w3-hide-small"> Random Page</span></a>
 			<a href="https://www.curseforge.com/minecraft/mc-mods/maidens-marvelous-materials/download" target="_blank" class="w3-bar-item bar-item"><i class="fa fa-download"></i><span class="w3-hide-small"> Download</span></a>
+		</div>
 			<a class="w3-right w3-bar-item bar-item" onclick="searchWiki()"><i class="fa fa-search"></i></a>
 			<a class="w3-right w3-bar-item"><input id="search" name="search" type="text" placeholder="Search..." class="bar-search" onkeydown="if(event.key === 'Enter') searchWiki()"></a>
 		</div>
@@ -234,11 +241,11 @@
 				let category = args[0] ?? 'missingno';
 				let entry = args[1] ?? 'missingno';
 				
-				if(category === 'special' && entry === 'random') {
+				if (category === 'special' && entry === 'random') {
 					return void (window.location.search = '?' + getRandomPage());
 				}
 				let response = await fetch('pages/' + category + '/' + entry + '.txt');
-				if(!response.ok) return void renderErrorPage(response);
+				if (!response.ok) return void renderErrorPage(response);
 				let text = await response.text();
 				
 				let result = SHML.parseMarkup(text);
@@ -252,10 +259,10 @@
 			}
 			async function loadWikiPages() {
 				let response = await fetch('pages/pages.txt');
-				if(!response.ok) return {};
+				if (!response.ok) return {};
 				let text = await response.text();
 				let pages = {};
-				for(let line of text.split('\n')) {
+				for (let line of text.split('\n')) {
 					line = line.trim();
 					if(line === '' || line.startsWith('//')) continue;
 					let args = line.split(';');
@@ -268,25 +275,25 @@
 			}
 			function renderPage(title, category, content, revisedOn, image) {
 				document.querySelector('.wiki-content').innerHTML = content;
-				if(image !== '' && image !== undefined) document.querySelector('.wiki-image').src = 'images/' + image;
+				if (image !== '' && image !== undefined) document.querySelector('.wiki-image').src = 'images/' + image;
 				let header = document.querySelector('.wiki-header');
-				if(category !== undefined) header.innerHTML += '<p>in: ' + getCategoryName(category) + '</p>'
+				if (category !== undefined) header.innerHTML += '<p>in: ' + getCategoryName(category) + '</p>'
 				header.innerHTML += '<h1 class="wiki-header-title">' + SHML.parseInlineMarkup(title).toHTML() + '</h1>';
-				if(revisedOn !== undefined) header.innerHTML += '<p>Last Revised On: ' + revisedOn.trim(); + '</p>';
+				if (revisedOn !== undefined) header.innerHTML += '<p>Last Revised On: ' + revisedOn.trim(); + '</p>';
 				document.title += ' (' + document.querySelector('.wiki-header-title').textContent + ')';
 			}
 			function renderOtherPages() {
-				if(pageMap === undefined) return;
+				if (pageMap === undefined) return;
 				let pages = document.querySelector('.wiki-pages');
-				for(let category in pageMap) {
+				for (let category in pageMap) {
 					let contents = [];
-					for(let page in pageMap[category]) contents.push('<a href=?' + category + ':' + page + '>' + pageMap[category][page] + '</a>');
+					for (let page in pageMap[category]) contents.push('<a href=?' + category + ':' + page + '>' + pageMap[category][page] + '</a>');
 					pages.innerHTML += '<details><summary>' + getCategoryName(category) + '</summary>' + contents.join(' ') + '</details>';
 				}
 			}
 			async function initWiki() {
 				pageMap = JSON.parse(sessionStorage.getItem('pageMap') ?? null) ?? undefined;
-				if(pageMap === undefined) {
+				if (pageMap === undefined) {
 					pageMap = await loadWikiPages();
 					sessionStorage.setItem('pageMap', JSON.stringify(pageMap));
 				}
@@ -294,7 +301,7 @@
 				renderOtherPages();
 			}
 			function getRandomPage() {
-				if(pageMap === undefined) return 'missingno:missingno';
+				if (pageMap === undefined) return 'missingno:missingno';
 				let keys = Object.keys(pageMap);
 				let category = keys[keys.length * Math.random() | 0];
 				keys = Object.keys(pageMap[category]);
@@ -311,10 +318,12 @@
 			function searchWiki() {
 				let results = [];
 				let query = document.querySelector('#search').value;
-				for(let word of query.replace(/[^a-zA-Z\d]/g, ' ').trim().toLowerCase().split(' ').map(o => o.replace(/[\s]/, '')))
-				for(let category in pageMap) {
-					let catMatch = levenshteinDistance(word, category) < 4 || levenshteinDistance(word, getCategoryName(category)) < 4;
-					for(let page in pageMap[category]) if(catMatch || levenshteinDistance(word, page) < 4 || levenshteinDistance(word, pageMap[category][page]) < 4) results.push(category + ':' + page);
+				for (let word of query.replace(/[^a-zA-Z\d]/g, ' ').trim().toLowerCase().split(' ').map(o => o.replace(/[\s]/, ''))) {
+					for (let category in pageMap) {
+						let catMatch = levenshteinDistance(word, category) < 4 || levenshteinDistance(word, getCategoryName(category)) < 4;
+						for (let page in pageMap[category]) if(catMatch || levenshteinDistance(word, page) < 4 || levenshteinDistance(word, pageMap[category][page]) < 4) results.push(category + ':' + page);
+					}
+					if ((levenshteinDistance(word, 'random') < 4 || levenshteinDistance(word, 'random') < 4) && !results.includes('special:random')) results.push('special:random');
 				}
 				let modal = document.getElementById('search-results');
 				modal.innerHTML = '';
