@@ -1,14 +1,14 @@
 !title: Mod Credits
 !revised: 01/06/2021
 !picture: trees.png
-# SteveBeebleBrox
+#[steveb] SteveBeeblebrox
 p: Mod code, website, book, squasher of bugs.
 
-#ZOnlyKroks
+#[kroks] ZOnlyKroks
 p: Mod code, github, discord.
 
-#RedStoneTim
+#[redstonetim] RedStoneTim
 p: Mod code
 
-#Maideniles
+#[maideniles] Maideniles
 p: Mod creator, code, images
