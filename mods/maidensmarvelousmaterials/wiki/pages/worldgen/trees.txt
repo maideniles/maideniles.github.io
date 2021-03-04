@@ -10,7 +10,7 @@ h3[dogwood]:Dogwood
 p: Light brown bark, with warm, pinkish wood inside.  Foliage is pink and white, flowering, with vines.
 h3[jacaranda]:Jacaranda 
 p:Warm tan colored bark, with bright, godenrod colored wood.  Foliage is purple and pink, flowering.
-h3[laburnum]:Laburnum: 
+h3[laburnum]:Laburnum 
 p: Dark brown bark, with yellow/brown rings and yellow/brown streaked wood.  Foliage is yellow, flowering, with vines.
 h3[paulownia]:Paulownia 
 p: Grayish-brown bark, with very pale, cool toned wood.  Foliage is cyan/blue, flowering, with vines.

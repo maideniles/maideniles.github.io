@@ -160,6 +160,9 @@
 			.search {
 				border-radius: 8px;
 			}
+			.wiki-content-list-item {
+				display: block;
+			}
 		</style>
 	</head>
 	<body>
@@ -202,7 +205,7 @@
 						</header>
 						<img class="wiki-image">
 						<div class="wiki-content-list">
-							
+							<h2><u>Contents</u></h2>
 						</div>
 					</div>
 					<div class="w3-card w3-white w3-margin w3-padding">
@@ -287,7 +290,7 @@
 				header.innerHTML += '<h1 class="wiki-header-title">' + SHML.parseInlineMarkup(title).toHTML() + '</h1>';
 				if (revisedOn !== undefined) header.innerHTML += '<p>Last Revised On: ' + revisedOn.trim(); + '</p>';
 				document.title += ' (' + document.querySelector('.wiki-header-title').textContent + ')';
-				document.querySelector('.wiki-content-list').innerHTML = ids.map(o => '<a href=#'+o+'>'+document.getElementById(o).innerHTML+'</a>').join('\n');
+				document.querySelector('.wiki-content-list').innerHTML += ids.map(o => '<a class="wiki-content-list-item" href=#'+o+'>'+document.getElementById(o).innerHTML+'</a>').join('\n');
 			}
 			function renderOtherPages() {
 				if (pageMap === undefined) return;
