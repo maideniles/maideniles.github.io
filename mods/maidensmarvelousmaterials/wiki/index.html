@@ -261,7 +261,7 @@
 				let revisedOn = result.getProperty('revised');
 				let image = (result.getProperty('picture') ?? '').trim();
 				
-				renderPage(title, category, result.toHTML(), revisedOn, image);
+				renderPage(title, category, result.toHTML(), revisedOn, image, result.getIds());
 			}
 			async function loadWikiPages() {
 				let response = await fetch('pages/pages.txt');
@@ -279,7 +279,7 @@
 				}
 				return pages;
 			}
-			function renderPage(title, category, content, revisedOn, image) {
+			function renderPage(title, category, content, revisedOn, image, ids) {
 				document.querySelector('.wiki-content').innerHTML = content;
 				if (image !== '' && image !== undefined) document.querySelector('.wiki-image').src = 'images/' + image;
 				let header = document.querySelector('.wiki-header');
@@ -287,6 +287,7 @@
 				header.innerHTML += '<h1 class="wiki-header-title">' + SHML.parseInlineMarkup(title).toHTML() + '</h1>';
 				if (revisedOn !== undefined) header.innerHTML += '<p>Last Revised On: ' + revisedOn.trim(); + '</p>';
 				document.title += ' (' + document.querySelector('.wiki-header-title').textContent + ')';
+				document.querySelector('.wiki-content-list').innerHTML = ids.map(o => '<a href=#'+o+'>'+document.querySelector('#'+o).innerHTML+'</a>').join('\n');
 			}
 			function renderOtherPages() {
 				if (pageMap === undefined) return;
@@ -318,7 +319,7 @@
 				return pageMap?.[category]?.index ?? category;
 			}
 			function renderErrorPage(response) {
-				renderPage('Error Loading Page', undefined, `An error has occurred while loading the page.<br><code>Status Code: ${response.status}<br>Ok: ${response.ok}<br>Details: ${response.statusText}</code>`, undefined, 'error.png');
+				renderPage('Error Loading Page', undefined, `An error has occurred while loading the page.<br><code>Status Code: ${response.status}<br>Ok: ${response.ok}<br>Details: ${response.statusText}</code>`, undefined, 'error.png', []);
 			}
 			initWiki();
 			function searchWiki() {
