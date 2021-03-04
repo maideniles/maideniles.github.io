@@ -153,9 +153,12 @@
 				font-weight: bold;
 			}
 			@media (max-width:600px) {
-				#search {
+				.search {
 					max-width: 100px;
 				}
+			}
+			.search {
+				border-radius: 8px;
 			}
 		</style>
 	</head>
@@ -169,7 +172,7 @@
 			<a href="https://www.curseforge.com/minecraft/mc-mods/maidens-marvelous-materials/download" target="_blank" class="w3-bar-item bar-item"><i class="fa fa-download"></i><span class="w3-hide-small"> Download</span></a>
 		</div>
 			<a class="w3-right w3-bar-item bar-item" onclick="searchWiki()"><i class="fa fa-search"></i></a>
-			<a class="w3-right w3-bar-item"><input id="search" name="search" type="text" placeholder="Search..." class="bar-search" onkeydown="if(event.key === 'Enter') searchWiki()"></a>
+			<a class="w3-right w3-bar-item"><input id="search" name="search" type="text" placeholder="Search..." class="search bar-search" onkeydown="if(event.key === 'Enter') searchWiki()"></a>
 		</div>
 		<div class="w3-bar bar-placeholder">
 			<img src="../../../assets/images/logo.png" class="logo w3-bar-item">
@@ -177,7 +180,7 @@
 			<a class="w3-bar-item bar-item" href="?special:random"><i class="fa fa-random"></i><span class="w3-hide-small"> Random Page</span></a>
 			<a href="https://www.curseforge.com/minecraft/mc-mods/maidens-marvelous-materials/download" target="_blank" class="w3-bar-item bar-item"><i class="fa fa-download"></i><span class="w3-hide-small"> Download</span></a>
 			<a class="w3-right w3-bar-item bar-item" onclick="searchWiki()"><i class="fa fa-search"></i></a>
-			<a class="w3-right w3-bar-item"><input id="search" name="search" type="text" placeholder="Search..." class="bar-search" onkeydown="if(event.key === 'Enter') searchWiki()"></a>
+			<a class="w3-right w3-bar-item"><input type="text" placeholder="Search..." class="search bar-search" onkeydown="if(event.key === 'Enter') searchWiki()"></a>
 		</div>
 
 		<div id="modal" class="w3-modal" onclick="setModalDisplay('none')">
@@ -198,6 +201,9 @@
 						
 						</header>
 						<img class="wiki-image">
+						<div class="wiki-content-list">
+							
+						</div>
 					</div>
 					<div class="w3-card w3-white w3-margin w3-padding">
 						<section class="wiki-content">
