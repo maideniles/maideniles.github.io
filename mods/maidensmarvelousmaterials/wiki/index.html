@@ -165,8 +165,14 @@
 			}
 			.wiki-content-list-item {
 				display: block;
+				text-decoration: none;
 			}
-			h1, h2, h3, h4, h5, h6 {
+			.wiki-content-list-item a:after {
+                content: "\00a0\f08e";
+                font: normal normal normal 14px/1 FontAwesome;
+                font-size: 0.75em;
+            }
+			a:has(h1, h2, h3, h4, h5, h6) {
 				text-decoration: none;
 			}
 		</style>
@@ -223,7 +229,7 @@
 				<div class="w3-card w3-white w3-margin w3-padding">
 					<h2>Other Articles</h2>
 					<div class="wiki-pages">
-						
+
 					</div>
 				</div>
 			</div>
