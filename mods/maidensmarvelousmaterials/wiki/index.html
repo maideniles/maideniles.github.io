@@ -296,7 +296,7 @@
 				header.innerHTML += '<h1 class="wiki-header-title">' + SHML.parseInlineMarkup(title).toHTML() + '</h1>';
 				if (revisedOn !== undefined) header.innerHTML += '<p>Last Revised On: ' + revisedOn.trim(); + '</p>';
 				document.title += ' (' + document.querySelector('.wiki-header-title').textContent + ')';
-				document.querySelector('.wiki-content-list').innerHTML += ids.map(o => ('&nbsp;&nbsp;'.repeat(o.split(':')[0][1])) + '<a class="wiki-content-list-item" href=#'+o+'>'+document.getElementById(o).innerHTML+'</a>').join('\n');
+				document.querySelector('.wiki-content-list').innerHTML += ids.map(o => '<a class="wiki-content-list-item" href=#' + o + '>' + ('&nbsp;&nbsp;'.repeat(o.split(':')[0][1])) + document.getElementById(o).innerHTML+'</a>').join('\n');
 			}
 			function renderOtherPages() {
 				if (pageMap === undefined) return;
