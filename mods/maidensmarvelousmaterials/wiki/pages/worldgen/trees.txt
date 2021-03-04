@@ -1,26 +1,26 @@
 !title: Trees (*Demo Page*)
 !picture: trees.png
 !revised: 12/8/2020
-##Ornamental Forest Trees
-h3:Cedar 
+##[oft]Ornamental Forest Trees
+h3[cedar]:Cedar 
 p: Warm brown colored bark, with warm, reddish wood on the inside.  Foliage is bright green, non-flowering, no vines.
-h3:Crabapple 
+h3[crabapple]:Crabapple 
 p: Pale brown bark, with grayish wood on the inside.  Foliage is dark pink/bright red, flowering, with vines.
-h3:Dogwood 
+h3[dogwood]:Dogwood 
 p: Light brown bark, with warm, pinkish wood inside.  Foliage is pink and white, flowering, with vines.
-h3:Jacaranda 
+h3[jacaranda]:Jacaranda 
 p:Warm tan colored bark, with bright, godenrod colored wood.  Foliage is purple and pink, flowering.
-h3:Laburnum: 
+h3[laburnum]:Laburnum: 
 p: Dark brown bark, with yellow/brown rings and yellow/brown streaked wood.  Foliage is yellow, flowering, with vines.
-h3:Paulownia 
+h3[paulownia]:Paulownia 
 p: Grayish-brown bark, with very pale, cool toned wood.  Foliage is cyan/blue, flowering, with vines.
-h3:Carolina Silverbell 
+h3[silverbell]:Carolina Silverbell 
 p: Dark  brown, orange and green-striped bark, with warm peach-colored wood inside.  Foliage is white, flowering, with vines.
-h3:Wisteria 
+h3[wisteria]:Wisteria 
 p: Dark brown/gray streaked bark, with pale, warm white wood inside.  Foliage is blue/violet, flowering, with vines.
-h3:Jade
+h3[jade]:Jade
 p: Pale brown bark, with pale, cool-white wood. Foliage is green, flowering, with vines.
-h3:Poinciana
+h3[poinciana]:Poinciana
 p: Dark brownish/red bark with lighter reddish/brown wood. Foliage is orange, flowering, with vines.
 
 
