@@ -35,7 +35,10 @@
 				left: 0;
 				filter: blur(3px) grayscale(5%);
 			}
-			.wiki-image, .download-image {
+			.wiki-image {
+				max-width: 50%;
+			}
+			.download-image {
 				max-width: 100%;
 			}
 			@media screen and (min-height: 700px) {
@@ -162,6 +165,9 @@
 			}
 			.wiki-content-list-item {
 				display: block;
+			}
+			h1, h2, h3, h4, h5, h6 {
+				text-decoration: none;
 			}
 		</style>
 	</head>
@@ -290,7 +296,7 @@
 				header.innerHTML += '<h1 class="wiki-header-title">' + SHML.parseInlineMarkup(title).toHTML() + '</h1>';
 				if (revisedOn !== undefined) header.innerHTML += '<p>Last Revised On: ' + revisedOn.trim(); + '</p>';
 				document.title += ' (' + document.querySelector('.wiki-header-title').textContent + ')';
-				document.querySelector('.wiki-content-list').innerHTML += ids.map(o => '<a class="wiki-content-list-item" href=#'+o+'>'+document.getElementById(o).innerHTML+'</a>').join('\n');
+				document.querySelector('.wiki-content-list').innerHTML += ids.map(o => ('&nbsp;&nbsp;'.repeat(o.split(':')[0][1])) + '<a class="wiki-content-list-item" href=#'+o+'>'+document.getElementById(o).innerHTML+'</a>').join('\n');
 			}
 			function renderOtherPages() {
 				if (pageMap === undefined) return;
@@ -322,6 +328,7 @@
 				return pageMap?.[category]?.index ?? category;
 			}
 			function renderErrorPage(response) {
+				document.querySelector('.wiki-content-list').innerHTML = '';
 				renderPage('Error Loading Page', undefined, `An error has occurred while loading the page.<br><code>Status Code: ${response.status}<br>Ok: ${response.ok}<br>Details: ${response.statusText}</code>`, undefined, 'error.png', []);
 			}
 			initWiki();
